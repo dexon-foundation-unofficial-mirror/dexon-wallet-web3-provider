@@ -13,7 +13,7 @@ class TrustWeb3Provider {
     this.idMapping = new IdMapping();
 
     this.callbacks = new Map;
-    this.isTrust = true;
+    this.isDekuSan = true;
   }
 
   isConnected() {
@@ -35,7 +35,7 @@ class TrustWeb3Provider {
 
   enable() {
     // this may be undefined somehow
-    var that = this || window.ethereum;
+    var that = this
     return that._sendAsync({
       method: "eth_requestAccounts",
       params: []
@@ -69,7 +69,7 @@ class TrustWeb3Provider {
         response.result = true;
         break;
       default:
-        throw new Error(`Trust does not support calling ${payload.method} synchronously without a callback. Please provide a callback parameter to call ${payload.method} asynchronously.`);
+        throw new Error(`DekuSan does not support calling ${payload.method} synchronously without a callback. Please provide a callback parameter to call ${payload.method} asynchronously.`);
     }
     return response;
   }
@@ -249,5 +249,5 @@ class TrustWeb3Provider {
   }
 }
 
-window.Trust = TrustWeb3Provider;
+window.DekuSan = TrustWeb3Provider;
 window.Web3 = Web3;
