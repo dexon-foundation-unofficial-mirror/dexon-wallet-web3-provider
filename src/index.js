@@ -41,7 +41,11 @@ class TrustWeb3Provider {
       params: []
     })
     .then(result => {
-      return result.result;
+      if (typeof result.result === "string") {
+        return [result.result];
+      } else {
+        return result.result;
+      }
     });
   }
 
