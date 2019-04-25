@@ -52,7 +52,6 @@ class FilterMgr {
 
   uninstallFilter(filterId) {
     let id = Utils.hexToInt(filterId);
-    console.log("uninstall filter ", this.filters.get(id));
     this.filters.delete(id);
     this.blockNumbers.delete(id);
     this._clearTimer(id);
@@ -193,7 +192,6 @@ class FilterMgr {
   _setupTimer(filterId) {
     this._clearTimer(filterId);
     let newTimer = setTimeout(() => {
-      console.log("filter timeout ", filterId);
       this.filters.delete(filterId);
       this.blockNumbers.delete(filterId);
     }, this.timeoutInterval);
