@@ -1,12 +1,11 @@
 "use strict";
 
-import Web3 from "web3";
 import FilterMgr from "./filter";
 import RPCServer from "./rpc";
 import Utils from "./utils";
 import IdMapping from "./id_mapping";
 
-class TrustWeb3Provider {
+class DexonWalletWeb3Provider {
   constructor(config) {
     this.setConfig(config);
 
@@ -35,7 +34,7 @@ class TrustWeb3Provider {
 
   enable() {
     // this may be undefined somehow
-    var that = this
+    var that = this;
     return that._sendAsync({
       method: "eth_requestAccounts",
       params: []
@@ -244,7 +243,6 @@ class TrustWeb3Provider {
   }
 
   sendError(id, error) {
-    console.log(`<== ${id} sendError ${error}`, id, error);
     let callback = this.callbacks.get(id);
     if (callback) {
       callback(error instanceof Error ? error : new Error(error), null);
@@ -253,5 +251,4 @@ class TrustWeb3Provider {
   }
 }
 
-window.DekuSan = TrustWeb3Provider;
-window.Web3 = Web3;
+window.DexonWallet = DexonWalletWeb3Provider;
