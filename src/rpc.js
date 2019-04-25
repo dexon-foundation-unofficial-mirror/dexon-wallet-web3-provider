@@ -23,7 +23,6 @@ class RPCServer {
   }
 
   call(payload) {
-    // console.log("==> call rpc ", payload);
     this.idMapping.tryIntifyId(payload);
     return fetch(this.rpcUrl, {
       method: "POST",
@@ -35,9 +34,7 @@ class RPCServer {
     })
     .then(response => response.json())
     .then(json => {
-      // console.log("<== rpc result", json);
       if (!json.result && json.error) {
-        console.log("<== rpc error", json.error);
         throw new Error(json.error.message || "rpc error");
       }
       this.idMapping.tryRestoreId(json);
