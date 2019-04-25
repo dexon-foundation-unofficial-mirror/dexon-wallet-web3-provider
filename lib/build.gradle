@@ -29,8 +29,8 @@ dependencies {
 task copyJSProvider(type: Copy)
 
 copyJSProvider{
-    from "../dist/trust-min.js"
-    rename 'trust-min.js', 'trust.js'
+    from "../dist/dexon-wallet-min.js"
+    rename 'dexon-wallet-min.js', 'dexon_wallet.js'
     into 'src/main/res/raw'
 }
 
