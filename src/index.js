@@ -12,7 +12,7 @@ class DexonWalletWeb3Provider {
     this.idMapping = new IdMapping();
 
     this.callbacks = new Map;
-    this.isDekuSan = true;
+    this.isDexonWallet = true;
   }
 
   isConnected() {
